@@ -1,0 +1,254 @@
+﻿@using GoodianoBlog.Application.Services.Common.GetItemMenu
+@model List<GetItemMenuDto>
+@{
+    Layout = null;
+}
+
+@foreach (var item in Model)
+{
+    <li class="nav-item dropdown mega-dropdown">
+        @if (item.Child.Count() > 0)
+        {
+            <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@item.Name<i class="fa fa-angle-down mr-3"></i></a>
+
+        }
+        <div class="dropdown-menu mega-menu-content clearfix">
+            <div class="menu-tab">
+                <div class="row">
+                    @if (item.Child.Count() > 0)
+                    {
+                        <ul class="nav nav-tabs flex-column col-2" data-toggle="tab-hover">
+                            <li class="nav-item">
+                                @foreach (var ChildItem in item.Child)
+                                {
+                                    <a href="~/Posts/Index?CatId=@ChildItem.Id">
+                                       @ChildItem.Name
+                                    </a>
+                                }
+                            </li>
+                        </ul>
+                    }
+                    @* <div class="tab-content col-10">
+                        <div class="tab-pane fade show active" id="tab-A">
+                        <div class="row">
+                        <div class="col-md-3">
+
+                        <div class="post-block-style clearfix">
+                        <div class="post-thumb">
+                        <a href="#"><img class="img-fluid" src="~/Template/images/news/lifestyle/image1.jpg" alt="" /></a>
+                        </div>
+                        <div class="post-content">
+                        <h2 class="post-title title-small">
+                        <a href="#">این پوشیدنی روی مچ دست شما به زودی ردیابی می شود ...</a>
+                        </h2>
+                        </div><!-- Post content end -->
+                        </div><!-- Post Block style end -->
+                        </div>
+                        <div class="col-md-3">
+                        <div class="post-block-style clearfix">
+                        <div class="post-thumb">
+                        <a href="#"><img class="img-fluid" src="~/Template/images/news/lifestyle/image2.png" alt="" /></a>
+                        </div>
+                        <div class="post-content">
+                        <h2 class="post-title title-small">
+                        <a href="#">نمی توانید آن سالن بدنسازی را ریخت؟ ممکن است در…</a>
+                        </h2>
+                        </div><!-- Post content end -->
+                        </div><!-- Post Block style end -->
+                        </div>
+                        <div class="col-md-3">
+                        <div class="post-block-style clearfix">
+                        <div class="post-thumb">
+                        <a href="#"><img class="img-fluid" src="~/Template/images/news/lifestyle/image3.png" alt="" /></a>
+                        </div>
+                        <div class="post-content">
+                        <h2 class="post-title title-small">
+                        <a href="#">حذف ترس از مغز به این معنی است که شما ممکن است هرگز ...</a>
+                        </h2>
+                        </div><!-- Post content end -->
+                        </div><!-- Post Block style end -->
+                        </div>
+                        <div class="col-md-3">
+                        <div class="post-block-style clearfix">
+                        <div class="post-thumb">
+                        <a href="#"><img class="img-fluid" src="~/Template/images/news/health/image2.png" alt="" /></a>
+                        </div>
+                        <div class="post-content">
+                        <h2 class="post-title title-small">
+                        <a href="#">بسته های هوشمند فن آوری و بوق را هنگام سرد بودن…</a>
+                        </h2>
+                        </div><!-- Post content end -->
+                        </div><!-- Post Block style end -->
+                        </div>
+                        </div>
+                        </div><!-- Tab pane 1 end -->
+
+                        <div class="tab-pane animated fadeIn" id="tab-B">
+                        <div class="row">
+                        <div class="col-md-3">
+                        <div class="post-block-style clearfix">
+                        <div class="post-thumb">
+                        <a href="#"><img class="img-fluid" src="~/Template/images/news/travel/image1.png" alt="" /></a>
+                        </div>
+                        <div class="post-content">
+                        <h2 class="post-title title-small">
+                        <a href="#">این پوشیدنی می تواند به زودی ردیابی شما ...</a>
+                        </h2>
+                        </div><!-- Post content end -->
+                        </div><!-- Post Block style end -->
+                        </div>
+                        <div class="col-md-3">
+                        <div class="post-block-style clearfix">
+                        <div class="post-thumb">
+                        <a href="#"><img class="img-fluid" src="~/Template/images/news/travel/image2.png" alt="" /></a>
+                        </div>
+                        <div class="post-content">
+                        <h2 class="post-title title-small">
+                        <a href="#">نمی توانید آن سالن بدنسازی را ریخت؟ ممکن است در شما باشد ...</a>
+                        </h2>
+                        </div><!-- Post content end -->
+                        </div><!-- Post Block style end -->
+                        </div>
+                        <div class="col-md-3">
+                        <div class="post-block-style clearfix">
+                        <div class="post-thumb">
+                        <a href="#"><img class="img-fluid" src="~/Template/images/news/travel/image3.png" alt="" /></a>
+                        </div>
+                        <div class="post-content">
+                        <h2 class="post-title title-small">
+                        <a href="#">حذف ترس از شما ممکن است هرگز ...</a>
+                        </h2>
+                        </div><!-- Post content end -->
+                        </div><!-- Post Block style end -->
+                        </div>
+                        <div class="col-md-3">
+                        <div class="post-block-style clearfix">
+                        <div class="post-thumb">
+                        <a href="#"><img class="img-fluid" src="~/Template/images/news/health/image2.png" alt="" /></a>
+                        </div>
+                        <div class="post-content">
+                        <h2 class="post-title title-small">
+                        <a href="#">بسته های هوشمند فن آوری و بوق را هنگام سرد بودن…</a>
+                        </h2>
+                        </div><!-- Post content end -->
+                        </div><!-- Post Block style end -->
+                        </div>
+                        </div><!-- Row end -->
+                        </div><!-- tab B end -->
+                        <div class="tab-pane animated fadeIn" id="tab-C">
+                        <div class="row">
+                        <div class="col-md-3">
+                        <div class="post-block-style clearfix">
+                        <div class="post-thumb">
+                        <a href="#"><img class="img-fluid" src="~/Template/images/news/fashion/image1.png" alt="" /></a>
+                        </div>
+                        <div class="post-content">
+                        <h2 class="post-title title-small">
+                        <a href="#">این پوشیدنی روی مچ دست شما می تواند به زودی</a>
+                        </h2>
+                        </div><!-- Post content end -->
+                        </div><!-- Post Block style end -->
+
+
+                        </div>
+                        <div class="col-md-3">
+                        <div class="post-block-style clearfix">
+                        <div class="post-thumb">
+                        <a href="#"><img class="img-fluid" src="~/Template/images/news/fashion/image2.png" alt="" /></a>
+                        </div>
+                        <div class="post-content">
+                        <h2 class="post-title title-small">
+                        <a href="#">آیا آن بدنسازی نمی تواند؟ ممکن است در…</a>
+                        </h2>
+                        </div><!-- Post content end -->
+                        </div><!-- Post Block style end -->
+                        </div>
+                        <div class="col-md-3">
+                        <div class="post-block-style clearfix">
+                        <div class="post-thumb">
+                        <a href="#"><img class="img-fluid" src="~/Template/images/news/food/food01.png" alt="" /></a>
+                        </div>
+                        <div class="post-content">
+                        <h2 class="post-title title-small">
+                        <a href="#">حذف ترس از احتمالاً ...</a>
+                        </h2>
+                        </div><!-- Post content end -->
+                        </div><!-- Post Block style end -->
+                        </div>
+                        <div class="col-md-3">
+
+                        <div class="post-block-style clearfix">
+                        <div class="post-thumb">
+                        <a href="#"><img class="img-fluid" src="~/Template/images/news/tech/tech1.png" alt="" /></a>
+                        </div>
+                        <div class="post-content">
+                        <h2 class="post-title title-small">
+                        <a href="#">بسته های هوشمند فناوری سنسور پارکینگ و بوق زدن در هنگام سرد بودن…</a>
+                        </h2>
+                        </div><!-- Post content end -->
+                        </div><!-- Post Block style end -->
+                        </div>
+                        </div>
+                        </div><!-- Tab pane 3 end -->
+                        <div class="tab-pane animated fadeIn" id="tab-D">
+                        <div class="row">
+                        <div class="col-md-3">
+                        <div class="post-block-style clearfix">
+                        <div class="post-thumb">
+                        <a href="#"><img class="img-fluid" src="~/Template/images/news/health/image1.png" alt="" /></a>
+                        </div>
+                        <div class="post-content">
+                        <h2 class="post-title title-small">
+                        <a href="#">این پوشیدنی روی مچ دست شما می تواند به زودی</a>
+                        </h2>
+                        </div><!-- Post content end -->
+                        </div><!-- Post Block style end -->
+
+
+                        </div>
+                        <div class="col-md-3">
+                        <div class="post-block-style clearfix">
+                        <div class="post-thumb">
+                        <a href="#"><img class="img-fluid" src="~/Template/images/news/health/image2.png" alt="" /></a>
+                        </div>
+                        <div class="post-content">
+                        <h2 class="post-title title-small">
+                        <a href="#">آیا آن بدنسازی نمی تواند؟ ممکن است در…</a>
+                        </h2>
+                        </div><!-- Post content end -->
+                        </div><!-- Post Block style end -->
+                        </div>
+                        <div class="col-md-3">
+                        <div class="post-block-style clearfix">
+                        <div class="post-thumb">
+                        <a href="#"><img class="img-fluid" src="~/Template/images/news/fashion/image4.png" alt="" /></a>
+                        </div>
+                        <div class="post-content">
+                        <h2 class="post-title title-small">
+                        <a href="#">حذف ترس از احتمالاً ...</a>
+                        </h2>
+                        </div><!-- Post content end -->
+                        </div><!-- Post Block style end -->
+                        </div>
+                        <div class="col-md-3">
+
+                        <div class="post-block-style clearfix">
+                        <div class="post-thumb">
+                        <a href="#"><img class="img-fluid" src="~/Template/images/news/tech/tech1.png" alt="" /></a>
+                        </div>
+                        <div class="post-content">
+                        <h2 class="post-title title-small">
+                        <a href="#">بسته های هوشمند فناوری سنسور پارکینگ و بوق زدن در هنگام سرد بودن…</a>
+                        </h2>
+                        </div><!-- Post content end -->
+                        </div><!-- Post Block style end -->
+                        </div>
+                        </div>
+                        </div><!-- Tab pane 4 end -->
+
+                        </div> <!-- Tab pane 2 end -->*@
+                </div>
+            </div><!-- Menu tab end -->
+    </div><!-- Mega menu end -->
+</li>
+}

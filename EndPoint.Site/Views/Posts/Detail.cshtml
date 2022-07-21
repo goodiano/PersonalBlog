@@ -1,0 +1,556 @@
+﻿@using GoodianoBlog.Application.Services.Posts.Query.ClientSide.Posts.GetPostDetail
+@model GetPostDetailDto
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>دیجی کول - قالب خبری خلاق HTML</title>
+
+    <!-- Mobile Specific Metas
+    ================================================== -->
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--Favicon-->
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+
+    <!-- CSS
+    ================================================== -->
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/Template/css/bootstrap.min.css">
+
+    <!-- IconFont -->
+    <link rel="stylesheet" href="/Template/css/iconfonts.css">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="/Template/css/font-awesome.min.css">
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="/Template/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/Template/css/owl.theme.default.min.css">
+    <!-- magnific -->
+    <link rel="stylesheet" href="/Template/css/magnific-popup.css">
+
+    <!-- Template styles-->
+    <link rel="stylesheet" href="/Template/css/style.css">
+    <!-- Responsive styles-->
+    <link rel="stylesheet" href="/Template/css/responsive.css">
+
+    <!-- Colorbox -->
+    <link rel="stylesheet" href="/Template/css/colorbox.css">
+
+
+    <script src="~/AdminTemplate/app-assets/tinymce/js/tinymce/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/zqv1oouitrk5c8grv4dd2q3dcvtdxseayjqj7by8d190hdp0/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+                  tinymce.init({
+                       selector: '#mytextarea',
+                         plugins: 'autolink lists media table ',
+                toolbar: 'a11ycheck addcomment showcomments casechange checklist code export formatpainter image editimage pageembed permanentpen table tableofcontents',
+                toolbar_mode: 'floating',
+                tinycomments_mode: 'embedded',
+                tinycomments_author: 'Author name',
+                image_caption: true,
+                    autosave_interval: '30s',
+                    image_title: true,
+                    paste_data_images: true,
+                    automatic_uploads: true,
+                    file_picker_callback: function (cb, value, meta) {
+                        var input = document.createElement('input');
+                        input.setAttribute('type', 'file');
+                        input.setAttribute('accept', 'image/*');
+
+                        input.onchange = function () {
+                            var file = this.files[0];
+
+                            var reader = new FileReader();
+                            reader.readAsDataURL(file);
+                            reader.onload = function () {
+                                var id = 'blobid' + (new Date()).getTime();
+                                var blobCache = tinymce.activeEditor.editorUpload.blobCache;
+                                var base64 = reader.result.split(',')[1];
+                                var blobInfo = blobCache.create(id, file, base64);
+                                blobCache.add(blobInfo);
+                                cb(blobInfo.blobUri(), { title: file.name });
+                            };
+                        };
+                        input.click();
+                    }
+        });
+    </script>
+</head>
+
+<body>
+
+    <!-- breadcrumb -->
+    <div class="breadcrumb-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-8">
+                    <ol class="breadcrumb">
+                        <li>
+                            <i class="fa fa-home"></i>
+                            <a href="#">خانه</a>
+                            <i class="fa fa-angle-right"></i>
+                        </li>
+                        <li><a href="#">سبک زندگی</a></li>
+                        <li><i class="fa fa-angle-right"></i>تلاش برای فروش یک..</li>
+                    </ol>
+                </div>
+            </div><!-- row end -->
+        </div><!-- container end -->
+    </div>
+    <!-- breadcrumb end -->
+
+    <section class="main-content pt-0">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="single-post">
+                        <div class="post-header-area">
+                            <h2 class="post-title title-lg">@Model.Title</h2>
+                            <ul class="post-meta">
+                                <li>
+                                    <a href="#" class="post-cat fashion">@Model.PostCategories.Name</a>
+                                </li>
+                                <li class="post-author">
+                                    <a href="#"><img alt="" src="@Model.Author.Src"><strong>@Model.Author.Name</strong></a>
+                                </li>
+                                <li><a href="#"><i class="fa fa-clock-o"></i>@Model.Date</a></li>
+                                <li><a href="#"><i class="fa fa-comments"></i>5 نظر </a></li>
+                                <li><a href="#" class="view"><i class="icon icon-fire"></i> بازدید فراوان</a></li>
+                                <li><a href="#"><i class="fa fa-eye"></i>@Model.Time دقیقه خواندن </a></li>
+
+                            </ul>
+                        </div><!-- post-header-area end -->
+                        <div class="post-content-area">
+                            <div class="post-media mb-20">
+                                <a href="" class="gallery-popup cboxElement">
+                                    <img src="/@Model.FirstSlideSrc" class="img-fluid" alt="">
+                                </a>
+                            </div>
+
+                            <div>@Html.Raw(Model.Content)</div>
+                        </div><!-- post-content-area end -->
+                        <div class="post-footer">
+                            <div class="tag-lists">
+                                <span>برچسب ها: </span><a href="#">مدل</a>
+                            </div><!-- tag lists -->
+                            <div class="author-box d-flex">
+                                <div class="author-img mb-5">
+                                    <img src="@Model.Author.Src" alt="">
+                                </div>
+                                <div class="author-info mt-2">
+                                    <h3>@Model.Author.Name</h3>
+                                    <p>@Model.Author.Description</p>
+                                </div>
+                            </div><!-- author box -->
+
+                            <div class="gap-30"></div>
+
+
+                            <!-- پست های اخیر start -->
+                            @*<div class="related-post">
+                                <h2 class="block-title">
+                                <span class="title-angle-shap"> پست های اخیر</span>
+                                </h2>
+                                <div class="row">
+                                <div class="col-md-4">
+                                <div class="post-block-style">
+                                <div class="post-thumb">
+                                <a href="~/Posts?Searchkey=@Context.Request.Query["SearchKey"]&CatId=@Context.Request.Query["CatId"]&ordering=MostPopular" role="tab" aria-controls="" selected="selected">
+                                <img class="img-fluid" src="images/news/tech/tech1.png" alt="">
+                                </a>
+                                <div class="grid-cat">
+                                <a class="post-cat tech" href="#">تکنولوژی</a>
+                                </div>
+                                </div>
+                                <div class="post-content">
+                                <h2 class="post-title">
+                                <a href="">تست</a>
+                                </h2>
+                                <div class="post-meta mb-7 p-0">
+                                <span class="post-date"><i class="fa fa-clock-o"></i> خرداد 1399</span>
+                                </div>
+                                </div><!-- Post content end -->
+                                </div>
+                                </div><!-- col end -->
+                                <div class="col-md-4">
+                                <div class="post-block-style">
+                                <div class="post-thumb">
+                                <a href="#">
+                                <img class="img-fluid" src="images/news/health/image2.png" alt="">
+                                </a>
+                                <div class="grid-cat">
+                                <a class="post-cat tech" href="#">تکنولوژی</a>
+                                </div>
+                                </div>
+
+                                <div class="post-content">
+                                <h2 class="post-title">
+                                <a href="#">ستاره پاپ ژانگ رسانه های اجتماعی نیز بی گناه شناخته شده است</a>
+                                </h2>
+                                <div class="post-meta mb-7 p-0">
+                                <span class="post-date"><i class="fa fa-clock-o"></i> خرداد 1399</span>
+                                </div>
+                                </div><!-- Post content end -->
+                                </div>
+                                </div><!-- col end -->
+                                <div class="col-md-4">
+                                <div class="post-block-style">
+                                <div class="post-thumb">
+                                <a href="#">
+                                <img class="img-fluid" src="images/news/fashion/image4.png" alt="">
+                                </a>
+                                <div class="grid-cat">
+                                <a class="post-cat tech" href="#">تکنولوژی</a>
+                                </div>
+                                </div>
+
+                                <div class="post-content">
+                                <h2 class="post-title">
+                                <a href="#">ستاره پاپ ژانگ رسانه های اجتماعی نیز بی گناه شناخته شده است</a>
+                                </h2>
+                                <div class="post-meta mb-7 p-0">
+                                <span class="post-date"><i class="fa fa-clock-o"></i> خرداد 1399</span>
+                                </div>
+                                </div><!-- Post content end -->
+                                </div>
+                                </div><!-- col end -->
+                                </div><!-- row end -->
+                                </div>*@
+                            <!-- پست های اخیر end -->
+
+
+                            <div class="gap-30"></div>
+
+
+                            <div class="comments-area">
+                                <h3 class="block-title"><span>نظرات شما</span></h3>
+                                <ul class="comments-list">
+                                    <li>
+                                        @foreach (var item in Model.GetComments)
+                                        {
+                                            @if (item.IsConfirm == true)
+                                            {
+                                                <div class="comment">
+
+                                                    <img class="comment-avatar pull-left" alt="" src="/image/Avatar/icon.jpg">
+                                                    <div class="comment-body">
+                                                        <div class="meta-data">
+                                                            <span class="comment-author"><span style="color:gray">ارسال شده توسط: </span>@item.UserName</span>
+                                                        </div>
+                                                        <div class="comment-content">
+                                                            <p>@Html.Raw(item.Context)</p>
+                                                        </div>
+                                                        <div class="text-left">
+                                                            <a class="comment-reply" href="#AddComment-Replay">پاسخ</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Comments end -->
+                                            }                
+                                            <ul class="comments-reply">
+                                                @foreach (var replay in item.GetCommentReplays)
+                                                {
+                                                    @if (item.IsConfirm == true)
+                                                    {
+                                                        <li>
+                                                            <div class="comment">
+                                                                <img class="comment-avatar pull-left" alt="" src="/image/Avatar/iconReplay.jpg">
+                                                                <div class="comment-body">
+                                                                    <div class="meta-data">
+                                                                        <span class="comment-author"><span style="color:gray">ارسال شده توسط: </span>@replay.UserName</span>
+                                                                    </div>
+                                                                    <div class="comment-content">
+                                                                        <p>@Html.Raw(replay.Context)</p>
+                                                                    </div>
+                                                                    <div class="text-left">
+                                                                    </div>
+                                                                </div>
+                                                            </div><!-- Comments end -->
+                                                        </li>
+                                                    }
+                                                }
+                                            </ul>
+                                            <!-- comments-reply end -->
+                                        }
+                                </li><!-- Comments-list li end -->
+                            </ul>
+
+                                <!-- Comments-list ul end -->
+
+                            </div><!-- comment end -->
+                            <!-- comment form -->
+
+
+
+                            <div id="AddComment-Replay" class="d-none d-md-block">
+                                <div class="comments-form">
+                                    <h3 class="title-normal">نظرت رو برام ارسال کن</h3>
+                                    <form method="post" asp-controller="Posts" asp-action="AddComment">                    
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <input class="form-control" name="userName" id="userName" placeholder="نام کاربری شما" type="text" required="">
+                                                </div>
+                                            </div><!-- Col end -->
+
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <input class="form-control" name="email" id="email" placeholder="ایمیل شما" type="email" required="">
+                                                </div>
+                                            </div>
+                                            <input class="form-control" name="postId" id="postId" type="hidden" value="@Model.Id" required="">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <textarea name="context" id="mytextarea" placeholder="نظر شما"></textarea>
+                                                </div>
+                                            </div><!-- Col end -->
+                                        </div><!-- Form row end -->
+                                        <div class="clearfix">
+                                            <div class="Row">
+                                                <button class="comments-btn btn btn-primary" id="btnAddComment" type="submit">ارسال نظر</button>
+                                                <p style="color:lightgray">نظر شما پس از تایید مدیریت درج خواهد شد</p>
+                                            </div>
+
+                                        </div>
+                                    </form><!-- Form end -->
+                                </div><!-- comment form end -->
+                            </div>
+                        </div><!-- single-post end -->
+                    </div><!-- col-lg-8 -->
+                </div><!-- row end -->
+
+
+                <script id="comment-template" type="text/x-handlebars-template">
+    <li class="comment" data-id="{{commentId}}">
+        <div class="avatar">
+            <a href="javascript:void(0);">
+                <img src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png" width="55" height="55">
+            </a>
+        </div>
+        <div class="comment-body">
+            <header>
+                <a href="javascript:void(0);" class="userlink">{{username}}</a> - <span class="pubdate">
+                    posted {{strCommentDate}}
+                </span>
+            </header>
+            <p>
+                {{commentText}}
+            </p>
+            <footer>
+                <a class="reply-link" href="{{commentId}}">Reply</a>
+            </footer>
+        </div>
+        
+    </li>
+</script>
+
+<script id="reply-template" type="text/template">
+    <div style="padding-top:10px" class="row reply-form">
+        <div class="col-sm-2">
+            <div class="thumbnail">
+                <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+                </div>
+            </div>
+            <div class="col-sm-10">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <textarea cols="15" id="replyInput" class="form-control" placeholder="Reply to conversation.."></textarea>
+                    </div>
+                    <div class="panel-heading comment-action">
+                        <div class="submit-comment">
+                            <a class="addReplyBtn" href="#">Submit</a>
+                            <input type="hidden" name="hidParentId" class="hidParentId"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</script>
+
+
+            </div>
+        </div><!-- container end -->
+    </section><!-- category-layout end -->
+    <!-- backto -->
+    <div class="top-up-btn">
+        <div class="backto" style="display: block;">
+            <a href="#" class="icon icon-arrow-up" aria-hidden="true"></a>
+        </div>
+    </div>
+    <!-- backto end-->
+    <!-- Javascript Files
+    ================================================== -->
+</body>
+<!-- initialize jQuery Library -->
+<script src="/Template/js/jquery.js"></script>
+<!-- Popper Jquery -->
+<script src="/Template/js/popper.min.js"></script>
+<!-- Bootstrap jQuery -->
+<script src="/Template/js/bootstrap.min.js"></script>
+<!-- magnific-popup -->
+<script src="/Template/js/jquery.magnific-popup.min.js"></script>
+<!-- Owl Carousel -->
+<script src="/Template/js/owl.carousel.min.js"></script>
+<!-- Color box -->
+<script src="/Template/js/jquery.colorbox.js"></script>
+<!-- Template custom -->
+<script src="/Template/js/custom.js"></script>
+
+@section Scripts
+{
+
+<link href="~/Sweetalert2/sweetalert2.min.css" rel="stylesheet" />
+<script src="~/Sweetalert2/sweetalert2.min.js"></script>
+
+<script>
+     <script src="~/Scripts/handlebars-v4.0.12.js"></script>
+    <script>
+        function addNewComment(data) {
+            return $.ajax({
+                type: "POST",
+                url: '@Url.Action("addNewComment", "Home")',
+                data: data,
+                dataType: 'json',
+                contentType: 'application/json;charset=utf-8'
+            });
+        }
+    $(function () {
+        var source = document.getElementById("comment-template").innerHTML;
+        var template = Handlebars.compile(source);
+        
+        $("#addNewCommentBtn").click(function (e) {
+            e.preventDefault();
+            var data = JSON.stringify({
+                parentId: 0,
+                commentText: $("#commentInput").val(),
+                username: Math.random().toString(36).substring(2, 10) + Math.random().toString(36).substring(2, 5)
+            });
+            
+            $.when(addNewComment(data)).then(function (response) {
+                if (response.error == false) {
+                    var $commentHtml = template(response.result);
+                    $(".comments").append($commentHtml);
+                    $("#commentInput").val('');
+                } else {
+                    console.log("An error has occured");
+                }
+            }).fail(function (err) {
+                console.log(err);
+            })
+        });
+        $(document).on("click", ".reply-link", function (e) {
+            e.preventDefault();
+            var $self = $(this);
+            var $commentListItem = $self.parents(".comment-body");
+            var replySource = document.getElementById("reply-template").innerHTML;
+            $commentListItem.after(replySource);
+            $(document).find(".hidParentId").val($self.attr("href"));
+            
+        });
+        
+        $(document).on("click", ".addReplyBtn", function (e) {
+            e.preventDefault();
+            var $self = $(this);
+            var $replyInput = $(document).find("#replyInput");
+            var parentId = $(document).find(".hidParentId").val();
+            var $repliesUL = $(document).find("ul[data-parentid='" + parentId + "']");
+            var $commentBody = $(document).find("[data-id='" + parentId + "']");
+            var replyULCount = $repliesUL.length;
+            
+            var data = JSON.stringify({
+                parentId: parentId,
+                commentText: $replyInput.val(),
+                username: Math.random().toString(36).substring(2, 10) + Math.random().toString(36).substring(2, 5)
+            });
+            $.when(addNewComment(data)).then(function (response) {
+                if (response.error == false) {
+                    var commentHtml = template(response.result);
+                    
+                    if (replyULCount > 0) {
+                        
+                        $repliesUL.append(commentHtml);
+                    } else {
+                        
+                        $commentBody.append("<ul class='replies'></ul>")
+                            .append(commentHtml);                        
+                    }
+                    $(document).find(".reply-form").remove();
+                    
+                } else {
+                    console.log("An error has occured");
+                }
+            }).fail(function (err) {
+                console.log(err);
+            })
+        
+        });
+    });
+    </script>
+
+
+
+//    $('#btnAddComment').on('click', function () {
+
+//    var data = new FormData();
+
+//     data.append("UserName", $("#userName").val());
+//     data.append("Email", $("#email").val());
+//     data.append("PostId", $("#postId").val());
+
+//     var Content = tinymce.get("mytextarea").getContent();
+//     data.append("Context",Content);
+
+
+//     // ارسال اطلاعات بع کنترلر
+//    var ajaxRequest = $.ajax({
+//             type: "POST",
+//             url: "AddComment",
+//             contentType: true,
+//             processData: true,
+//             data: data,
+//             success: function (data) {
+
+//                 if (data.isSuccess == true) {
+
+//                     swal.fire(
+//                         'موفق!',
+//                         data.message,
+//                         'success'
+//                     );
+//                 }
+//                 else {
+
+//                     swal.fire(
+//                         'هشدار!',
+//                         data.message,
+//                         'warning'
+//                     );
+//                 }
+
+//             },
+//             error: function (xhr, ajaxOptions, thrownError) {
+//                 alert(xhr.status);
+//                 alert(thrownError);
+//             }
+
+//         });
+
+//         ajaxRequest.done(function (xhr, textStatus) {
+//             // Do other operation
+//         });
+//     });
+//</script>
+}
+</html>

@@ -1,0 +1,725 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - EndPoint.Site</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/EndPoint.Site.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Template/fonts/FontsForRegisterLogin/material-icon/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="~/Template/css/StyleForRegisterLogin/style.css">
+</head>
+<body>
+    <main role="main" class="pb-3">
+        <div class="trending-bar trending-light d-md-block container">
+            <div>
+                <div class="row justify-content-between">
+                    <div class="col-md-9 text-center text-md-left">
+                        <p class="trending-title"><i class="tsicon fa fa-bolt"></i> اخبار داغ</p>
+                        <div id="trending-slide" class="owl-carousel owl-theme trending-slide">
+                            <div class="item">
+                                <div class="post-content">
+                                    <h2 class="post-title title-small">
+                                        <a href="#">بهترین گزینه های مکبوک پرو در سال  جدید</a>
+                                    </h2>
+                                </div><!-- Post content end -->
+                            </div><!-- Item 1 end -->
+                            <div class="item">
+                                <div class="post-content">
+                                    <h2 class="post-title title-small">
+                                        <a href="#">با پهپاد سروش  در پاتاگونیای جنوبی صعود کرد</a>
+                                    </h2>
+                                </div><!-- Post content end -->
+                            </div><!-- Item 2 end -->
+                            <div class="item">
+                                <div class="post-content">
+                                    <h2 class="post-title title-small">
+                                        <a href="#">زندگی را همیشه تجربه کنید، تا زیبایی را ببینید</a>
+                                    </h2>
+                                </div><!-- Post content end -->
+                            </div><!-- Item 3 end -->
+                        </div><!-- Carousel end -->
+
+                    </div><!-- Col end -->
+                    <div class="col-md-3 text-md-right text-center">
+                        <div class="col-md-12 col-sm-12">
+                            <div class="ad-banner float-right">
+                                <div b-olczgf6xwz="" class="top-menu top-link-menu">
+                                    <div b-olczgf6xwz="" class="col-lg-12 col-md-12 col-xs-12 pl">
+                                        <div b-olczgf6xwz="" class="header-left">
+                                            <div b-olczgf6xwz="" class="header-account text-left">
+                                                <div b-olczgf6xwz="" class="d-block">
+                                                    <div b-olczgf6xwz="" class="account-box">
+                                                        <div b-olczgf6xwz="" class="nav-account pl">
+
+                                                            <div class="account-box ts-date">
+                                                                @if (User.Identity.IsAuthenticated)
+                                                                {
+                                                                    <div class="nav-account d-block pl">
+                                                                        <span class="icon-account">
+                                                                            <img src="Template/images/1255.png" style="max-width:100%; height: 30px" class="avator">
+                                                                        </span>
+                                                                        <span class="title-account">@User.Identity.Name</span>
+                                                                        /
+                                                                        <a href="~/AuthenticationContoller\SignOut" class="account-link">خروج</a>
+                                                                    </div>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <div class="nav-account pl">
+                                                                        <a href="~/AuthenticationContoller\SignUp">
+                                                                            <span b-olczgf6xwz="" style="color:orange" class="title-account"> ثبت نام</span>
+                                                                        </a>
+                                                                        /
+                                                                        <a href="~/AuthenticationContoller\LogIn">
+                                                                            <span b-olczgf6xwz="" style="color:orange" class="title-account"> ورود</span>
+                                                                        </a>
+                                                                    </div>
+                                                                }
+
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ts-date">
+                            <i class="fa fa-calendar-check-o"></i>خرداد 1399
+                        </div>
+                    </div><!-- Col end -->
+                </div>
+            </div><!--/ Row end -->
+        </div><!--/ Trending end -->
+
+        <header id="header" class="header container">
+            <div>
+                <div class="row align-items-up justify-content-between">
+                    <div class="col-md-3 col-sm-12">
+                        <div class="logo">
+                            <a href="index.html">
+                                <img src="~/Template/images/logos/logo.png" alt="">
+                            </a>
+                        </div>
+                    </div><!-- logo col end -->
+                    @*<a href="#">
+                        <img src="~/Template/images/banner-image/image1.png" class="img-fluid" alt="">
+                        </a>*@
+                </div>
+            </div><!-- header right end -->
+            	<!-- Menu wrapper start -->
+	<div class="main-nav clearfix is-ts-sticky container">
+			<div class="row justify-content-between">
+				<nav class="navbar navbar-expand-lg col-lg-8">
+					<div class="site-nav-inner float-left">
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
+						<span class="fa fa-bars"></span>
+					</button>
+					   <!-- End of Navbar toggler -->
+					   <div id="navbarSupportedContent" class="collapse navbar-collapse navbar-responsive-collapse">
+						   <ul class="nav navbar-nav">
+								<li class="nav-item dropdown active">
+									<a href="~/Home/index" class="menu-dropdown" data-toggle="dropdown">خانه <i class="fa fa-angle-down"></i></a>									
+								</li>
+
+								@await Component.InvokeAsync("GetItemMenu")
+@*
+								<li class="nav-item dropdown mega-dropdown">
+									<a href="category.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">سبک زندگی <i class="fa fa-angle-down"></i></a>
+									<!-- responsive dropdown -->
+									<ul class="dropdown-menu" role="menu">
+										<li><a href="category.html">سبک زندگی 1</a></li>
+										<li><a href="category-2.html">سبک زندگی 2</a></li>
+										<li><a href="category.html">سبک زندگی 3</a></li>
+									</ul>
+									<!-- responsive dropdown end -->
+									<div class="dropdown-menu mega-menu-content clearfix">
+										<div class="menu-tab">
+											<div class="row">
+												<ul class="nav nav-tabs flex-column col-2" data-toggle="tab-hover">
+											  	<li class="nav-item">
+											  		<a class="animated fadeIn active" href="#tab-A" data-toggle="tab">
+											  			<span class="tab-head">
+															<span class="tab-text-title">سلامت</span>					
+														</span>
+											  		</a>
+											  	</li>
+											  	<li class="nav-item">
+												  	<a class="animated fadeIn" href="#tab-B" data-toggle="tab">
+												  		<span class="tab-head">
+															<span class="tab-text-title">مسافرت</span>					
+														</span>
+												  	</a>
+												</li>
+											 	<li class="nav-item">
+												  	<a class="animated fadeIn" href="#tab-C" data-toggle="tab">
+												  		<span class="tab-head">
+															<span class="tab-text-title">غذا</span>					
+														</span>
+												  	</a>
+												</li>
+												<li class="nav-item">
+												  	<a class="animated fadeIn" href="#tab-D" data-toggle="tab">
+												  		<span class="tab-head">
+															<span class="tab-text-title">مدل</span>					
+														</span>
+												  	</a>
+												</li>
+											</ul>
+
+											<div class="tab-content col-10">
+										      <div class="tab-pane fade show active" id="tab-A">
+										      	<div class="row">
+										      		<div class="col-md-3">
+										      			
+											      		<div class="post-block-style clearfix">
+															<div class="post-thumb">
+																<a href="#"><img class="img-fluid" src="~/Template/images/news/lifestyle/image1.jpg" alt="" /></a>
+															</div>
+															<div class="post-content">
+																<h2 class="post-title title-small">
+																	<a href="#">این پوشیدنی روی مچ دست شما به زودی ردیابی می شود ...</a>
+																</h2>
+															</div><!-- Post content end -->
+														</div><!-- Post Block style end -->
+										      		</div>
+										      		<div class="col-md-3">
+											      		<div class="post-block-style clearfix">
+																<div class="post-thumb">
+																	<a href="#"><img class="img-fluid" src="~/Template/images/news/lifestyle/image2.png" alt="" /></a>
+																</div>
+																<div class="post-content">
+														 			<h2 class="post-title title-small">
+														 				<a href="#">نمی توانید آن سالن بدنسازی را ریخت؟ ممکن است در…</a>
+														 			</h2>
+													 			</div><!-- Post content end -->
+															</div><!-- Post Block style end -->
+														</div>
+										      		<div class="col-md-3">
+											      		<div class="post-block-style clearfix">
+																<div class="post-thumb">
+																	<a href="#"><img class="img-fluid" src="~/Template/images/news/lifestyle/image3.png" alt="" /></a>
+																</div>
+																<div class="post-content">
+														 			<h2 class="post-title title-small">
+														 				<a href="#">حذف ترس از مغز به این معنی است که شما ممکن است هرگز ...</a>
+														 			</h2>
+													 			</div><!-- Post content end -->
+															</div><!-- Post Block style end -->
+														</div>
+										      		<div class="col-md-3">
+											      		<div class="post-block-style clearfix">
+															<div class="post-thumb">
+																<a href="#"><img class="img-fluid" src="~/Template/images/news/health/image2.png" alt="" /></a>
+															</div>
+															<div class="post-content">
+																<h2 class="post-title title-small">
+																	<a href="#">بسته های هوشمند فن آوری و بوق را هنگام سرد بودن…</a>
+																</h2>
+															</div><!-- Post content end -->
+														</div><!-- Post Block style end -->
+													</div>
+										      	</div>
+											</div><!-- Tab pane 1 end -->
+
+											<div class="tab-pane animated fadeIn" id="tab-B">
+												<div class="row">
+													<div class="col-md-3">
+														<div class="post-block-style clearfix">
+															<div class="post-thumb">
+																<a href="#"><img class="img-fluid" src="~/Template/images/news/travel/image1.png" alt="" /></a>
+															</div>
+															<div class="post-content">
+																<h2 class="post-title title-small">
+																	<a href="#">این پوشیدنی می تواند به زودی ردیابی شما ...</a>
+																</h2>
+															</div><!-- Post content end -->
+														</div><!-- Post Block style end -->
+													</div>
+													<div class="col-md-3">
+														<div class="post-block-style clearfix">
+															<div class="post-thumb">
+																<a href="#"><img class="img-fluid" src="~/Template/images/news/travel/image2.png" alt="" /></a>
+															</div>
+															<div class="post-content">
+																<h2 class="post-title title-small">
+																	<a href="#">نمی توانید آن سالن بدنسازی را ریخت؟ ممکن است در شما باشد ...</a>
+																</h2>
+															</div><!-- Post content end -->
+														</div><!-- Post Block style end -->
+													</div>
+													<div class="col-md-3">
+														<div class="post-block-style clearfix">
+															<div class="post-thumb">
+																<a href="#"><img class="img-fluid" src="~/Template/images/news/travel/image3.png" alt="" /></a>
+															</div>
+															<div class="post-content">
+																<h2 class="post-title title-small">
+																	<a href="#">حذف ترس از شما ممکن است هرگز ...</a>
+																</h2>
+															</div><!-- Post content end -->
+														</div><!-- Post Block style end -->
+													</div>
+													<div class="col-md-3">
+														<div class="post-block-style clearfix">
+															<div class="post-thumb">
+																<a href="#"><img class="img-fluid" src="~/Template/images/news/health/image2.png" alt="" /></a>
+															</div>
+															<div class="post-content">
+																<h2 class="post-title title-small">
+																	<a href="#">بسته های هوشمند فن آوری و بوق را هنگام سرد بودن…</a>
+																</h2>
+															</div><!-- Post content end -->
+														</div><!-- Post Block style end -->
+													</div>
+												</div><!-- Row end -->
+											</div><!-- tab B end -->
+											<div class="tab-pane animated fadeIn" id="tab-C">
+												<div class="row">
+													<div class="col-md-3">
+														<div class="post-block-style clearfix">
+															<div class="post-thumb">
+																<a href="#"><img class="img-fluid" src="~/Template/images/news/fashion/image1.png" alt="" /></a>
+															</div>
+															<div class="post-content">
+																<h2 class="post-title title-small">
+																	<a href="#">این پوشیدنی روی مچ دست شما می تواند به زودی</a>
+																</h2>
+															</div><!-- Post content end -->
+														</div><!-- Post Block style end -->
+													
+													
+													</div>
+													<div class="col-md-3">
+														<div class="post-block-style clearfix">
+															<div class="post-thumb">
+																<a href="#"><img class="img-fluid" src="~/Template/images/news/fashion/image2.png" alt="" /></a>
+															</div>
+															<div class="post-content">
+																<h2 class="post-title title-small">
+																	<a href="#">آیا آن بدنسازی نمی تواند؟ ممکن است در…</a>
+																</h2>
+															</div><!-- Post content end -->
+														</div><!-- Post Block style end -->
+													</div>
+													<div class="col-md-3">
+														<div class="post-block-style clearfix">
+															<div class="post-thumb">
+																<a href="#"><img class="img-fluid" src="~/Template/images/news/food/food01.png" alt="" /></a>
+															</div>
+															<div class="post-content">
+																<h2 class="post-title title-small">
+																	<a href="#">حذف ترس از احتمالاً ...</a>
+																</h2>
+															</div><!-- Post content end -->
+														</div><!-- Post Block style end -->
+													</div>
+													<div class="col-md-3">
+														
+														<div class="post-block-style clearfix">
+															<div class="post-thumb">
+																<a href="#"><img class="img-fluid" src="~/Template/images/news/tech/tech1.png" alt="" /></a>
+															</div>
+															<div class="post-content">
+																<h2 class="post-title title-small">
+																	<a href="#">بسته های هوشمند فناوری سنسور پارکینگ و بوق زدن در هنگام سرد بودن…</a>
+																</h2>
+															</div><!-- Post content end -->
+														</div><!-- Post Block style end -->
+													</div>
+												</div> 		
+											</div><!-- Tab pane 3 end -->
+											<div class="tab-pane animated fadeIn" id="tab-D">
+												<div class="row">
+													<div class="col-md-3">
+														<div class="post-block-style clearfix">
+															<div class="post-thumb">
+																<a href="#"><img class="img-fluid" src="~/Template/images/news/health/image1.png" alt="" /></a>
+															</div>
+															<div class="post-content">
+																<h2 class="post-title title-small">
+																	<a href="#">این پوشیدنی روی مچ دست شما می تواند به زودی</a>
+																</h2>
+															</div><!-- Post content end -->
+														</div><!-- Post Block style end -->
+													
+													
+													</div>
+													<div class="col-md-3">
+														<div class="post-block-style clearfix">
+															<div class="post-thumb">
+																<a href="#"><img class="img-fluid" src="~/Template/images/news/health/image2.png" alt="" /></a>
+															</div>
+															<div class="post-content">
+																<h2 class="post-title title-small">
+																	<a href="#">آیا آن بدنسازی نمی تواند؟ ممکن است در…</a>
+																</h2>
+															</div><!-- Post content end -->
+														</div><!-- Post Block style end -->
+													</div>
+													<div class="col-md-3">
+														<div class="post-block-style clearfix">
+															<div class="post-thumb">
+																<a href="#"><img class="img-fluid" src="~/Template/images/news/fashion/image4.png" alt="" /></a>
+															</div>
+															<div class="post-content">
+																<h2 class="post-title title-small">
+																	<a href="#">حذف ترس از احتمالاً ...</a>
+																</h2>
+															</div><!-- Post content end -->
+														</div><!-- Post Block style end -->
+													</div>
+													<div class="col-md-3">
+														
+														<div class="post-block-style clearfix">
+															<div class="post-thumb">
+																<a href="#"><img class="img-fluid" src="~/Template/images/news/tech/tech1.png" alt="" /></a>
+															</div>
+															<div class="post-content">
+																<h2 class="post-title title-small">
+																	<a href="#">بسته های هوشمند فناوری سنسور پارکینگ و بوق زدن در هنگام سرد بودن…</a>
+																</h2>
+															</div><!-- Post content end -->
+														</div><!-- Post Block style end -->
+													</div>
+												</div> 		
+											</div><!-- Tab pane 4 end -->
+
+									        </div> <!-- Tab pane 2 end -->
+											</div>
+										</div><!-- Menu tab end -->
+									</div><!-- Mega menu end -->
+								</li><!-- Tab menu end -->
+
+								<li>
+									<a href="category-2.html">تکنولوژی</a>
+								</li>
+
+								<li class="dropdown nav-item mega-dropdown">
+									<a href="#" class="dropdown-toggler menu-dropdown" data-toggle="dropdown"> ویدئو <i class="fa fa-angle-down"></i></a>
+									<!-- responsive dropdown -->
+									<ul class="dropdown-menu" role="menu">
+										<li><a href="category.html">دسته 1</a></li>
+										<li><a href="category-2.html">دسته 2</a></li>
+										<li><a href="category.html">دسته 3</a></li>
+									</ul>
+									<!-- responsive dropdown end -->
+									<div class="dropdown-menu mega-menu-content clearfix">
+										<div class="mega-menu-content-inner">
+											<div class="row">
+								      		<div class="col-md-3">
+									      		<div class="post-block-style clearfix">
+													<div class="post-thumb">
+														<img class="img-fluid" src="~/Template/images/news/video/video4.jpg" alt="" />
+														<a class="popup" href="https://www.aparat.com/v/w15xk">
+														<div class="video-icon">
+														<i class="fa fa-play"></i>
+													</div>
+													</a>
+													</div><!-- Post thumb end -->
+													<div class="post-content">
+														<h2 class="post-title title-small">
+															نت فلیکس سرماخوردگی را با یکپارچه کاهش می دهد
+														</h2>
+													</div><!-- Post content end -->
+												</div><!-- Post Block style end -->
+								      		</div><!-- Col 1 end -->
+
+								      		<div class="col-md-3">
+									      		<div class="post-block-style clearfix">
+													<div class="post-thumb">
+														<img class="img-fluid" src="~/Template/images/news/video/video3.jpg" alt="" />
+														<a class="popup" href="https://www.aparat.com/">
+															<div class="video-icon">
+															<i class="fa fa-play"></i>
+														</div>
+														</a>
+													</div><!-- Post thumb end -->
+													<div class="post-content">
+														<h2 class="post-title title-small">
+															نت فلیکس سرماخوردگی را با یکپارچه کاهش می دهد
+														</h2>
+													</div><!-- Post content end -->
+												</div><!-- Post Block style end -->
+								      		</div><!-- Col 2 end -->
+
+								      		<div class="col-md-3">
+									      		<div class="post-block-style clearfix">
+													<div class="post-thumb">
+														<img class="img-fluid" src="~/Template/images/news/video/video2.jpg" alt="" />
+														<a class="popup" href="https://www.aparat.com">
+															<div class="video-icon">
+															<i class="fa fa-play"></i>
+														</div>
+														</a>
+													</div><!-- Post thumb end -->
+													<div class="post-content">
+														<h2 class="post-title title-small">
+															<a href="#">تی جی6  دارای دوربین دوگانه 13 مگاپیکسلی خواهد بود...</a>
+														</h2>
+													</div><!-- Post content end -->
+												</div><!-- Post Block style end -->
+								      		</div><!-- Col 3 end -->
+								      		<div class="col-md-3">
+									      		<div class="post-block-style clearfix">
+													<div class="post-thumb">
+														<img class="img-fluid" src="~/Template/images/news/video/video1.jpg" alt="" />
+														<a class="popup" href="https://www.aparat.com">
+															<div class="video-icon">
+															<i class="fa fa-play"></i>
+														</div>
+														</a>
+													</div><!-- Post thumb end -->
+													<div class="post-content">
+														<h2 class="post-title title-small">
+															نت فلیکس سرماخوردگی را با یکپارچه کاهش می دهد
+														</h2>
+													</div><!-- Post content end -->
+												</div><!-- Post Block style end -->
+								      		</div><!-- Col 4 end -->
+								      	</div><!-- Post block row end -->
+										</div> 
+										
+									</div><!-- Mega menu content end -->
+								</li><!-- Video menu end -->
+
+								<li>
+									<a href="category.html">مسافرت</a>
+								</li>
+
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle menu-dropdown" data-toggle="dropdown">ویژگی ها <i class="fa fa-angle-down"></i></a>
+									<ul class="dropdown-menu" role="menu">
+										<li class="dropdown-submenu">
+											<a href="#." class="menu-dropdown" data-toggle="dropdown">طرح های دسته بندی</a>
+											<ul class="dropdown-menu">
+												<li><a href="category.html">سبک دسته 1</a></li>
+												<li><a href="category-2.html">سبک دسته 2</a></li>
+											</ul>
+										</li>
+										<li class="dropdown-submenu">
+											<a href="#." class="menu-dropdown">فرمت های پست</a>
+											<ul class="dropdown-menu">
+												<li><a href="single.html">سینگل پست 1</a></li>
+												<li><a href="single-2.html">سینگل پست 2</a></li>
+											</ul>
+										</li>
+										<li class="dropdown-submenu">
+											<a href="#." class="menu-dropdown">سایدبار</a>
+											<ul class="dropdown-menu">
+												<li><a href="left-sidebar.html">سایدبار چپ</a></li>
+												<li><a href="single.html">سایدبار راست</a></li>
+												<li><a href="no-sidebar.html">بدون سایدبار</a></li>
+											</ul>
+										</li>
+										<li class="dropdown-submenu">
+											<a href="#." class="menu-dropdown">صفحات</a>
+											<ul class="dropdown-menu">
+												<li><a href="author.html">نویسنده</a></li>
+												<li><a href="404.html">صفحه 404</a></li>
+												<li><a href="contact.html">تماس</a></li>
+											</ul>
+										</li>
+									</ul><!-- End dropdown -->
+								</li>*@<!-- Features menu end -->
+							</ul><!--/ Nav ul end -->
+						</div><!--/ Collapse end -->
+
+					</div><!-- Site Navbar inner end -->
+				</nav><!--/ Navigation end -->
+
+				<div class="col-lg-4 text-right nav-social-wrap">
+					<div class="top-social">
+						<ul class="social list-unstyled">
+							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+							<li><a href="#"><i class="fa fa-instagram"></i></a></li>
+							<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+						</ul>
+					</div>
+					
+					<div class="nav-search">
+						<a href="#search-popup" class="xs-modal-popup">
+							<i class="icon icon-search1"></i>
+						</a>
+					</div><!-- Search end -->
+						
+					<div class="zoom-anim-dialog mfp-hide modal-searchPanel ts-search-form" id="search-popup">
+						<div class="modal-dialog modal-lg">
+							<div class="modal-content">
+								<div class="xs-search-panel">
+									<form class="ts-search-group">
+										<div class="input-group">
+											<input type="search" class="form-control" name="s" placeholder="جستجو" value="">
+											<button class="input-group-btn search-button">
+												<i class="icon icon-search1"></i>
+											</button>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div><!-- End xs modal -->
+				</div>
+			</div><!--/ Row end -->
+	</div><!-- Menu wrapper end -->
+        </header><!--/ Header end -->
+        @RenderBody()
+    </main>
+
+    <!-- Footer start -->
+    <div class="ts-footer container">
+        <div>
+            <div class="row ts-gutter-30 justify-content-lg-between justify-content-center">
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-widtet">
+                        <h3 class="widget-title"><span>درباره ما</span></h3>
+                        <div class="widget-content">
+                            <p>املاک پنهان هیلز با دید کوه و شهر باعث افزایش نه اتاق خواب از جمله مجموعه اصلی با تراس اختصاصی و سرگرمی می شود. بال که شامل یک تئاتر 20 صندلی است.</p>
+                            <ul class="ts-footer-info">
+                                <li><i class="fa fa-home"></i> ایران، ارومیه، شاهین دژ</li>
+                                <li><i class="icon icon-phone2"></i> +1 212-602-9641</li>
+                                <li><i class="fa fa-envelope"></i>info@example.com</li>
+                            </ul>
+                            <ul class="ts-social">
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
+                                <li><a href="#"><i class="fa fa-rss"></i></a></li>
+                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div><!-- col end -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-widtet post-widget">
+                        <h3 class="widget-title"><span>پست های محبوب</span></h3>
+                        <div class="widget-content">
+                            <div class="list-post-block">
+                                <ul class="list-post">
+                                    <li>
+                                        <div class="post-block-style media">
+                                            <div class="post-thumb">
+                                                <a href="#">
+                                                    <img class="img-fluid" src="~/Template/images/news/tech/image5.png" alt="">
+                                                </a>
+                                            </div><!-- Post thumb end -->
+
+                                            <div class="post-content media-body">
+                                                <h4 class="post-title">
+                                                    <a href="#">سانتینو ساکن پیر شد</a>
+                                                </h4>
+                                                <div class="post-meta mb-7">
+                                                    <span class="post-date"><i class="fa fa-clock-o"></i> خرداد 1399</span>
+                                                </div>
+                                            </div><!-- Post content end -->
+                                        </div><!-- Post block style end -->
+                                    </li><!-- Li 1 end -->
+                                    <li>
+                                        <div class="post-block-style media">
+                                            <div class="post-thumb">
+                                                <a href="#">
+                                                    <img class="img-fluid" src="~/Template/images/news/fashion/image4.png" alt="">
+                                                </a>
+                                            </div><!-- Post thumb end -->
+
+                                            <div class="post-content media-body">
+                                                <h4 class="post-title">
+                                                    <a href="#">جنیفر لوپز درامد خود را بخشید</a>
+                                                </h4>
+                                                <div class="post-meta mb-7">
+                                                    <span class="post-date"><i class="fa fa-clock-o"></i> خرداد 1399</span>
+                                                </div>
+                                            </div><!-- Post content end -->
+                                        </div><!-- Post block style end -->
+                                    </li><!-- Li 2 end -->
+                                    <li>
+                                        <div class="post-block-style media">
+                                            <div class="post-thumb">
+                                                <a href="#">
+                                                    <img class="img-fluid" src="~/Template/images/news/tech/tech1.png" alt="">
+                                                </a>
+                                            </div><!-- Post thumb end -->
+
+                                            <div class="post-content media-body">
+                                                <h4 class="post-title">
+                                                    <a href="#">ستاره پاپ ژانگ رسانه های اجتماعی نیز شناخته شده است</a>
+                                                </h4>
+                                                <div class="post-meta mb-7">
+                                                    <span class="post-date"><i class="fa fa-clock-o"></i> خرداد 1399</span>
+                                                </div>
+                                            </div><!-- Post content end -->
+                                        </div><!-- Post block style end -->
+                                    </li><!-- Li 3 end -->
+                                    <li>
+                                        <div class="post-block-style media">
+                                            <div class="post-thumb">
+                                                <a href="#">
+                                                    <img class="img-fluid" src="~/Template/images/news/fashion/image1.png" alt="">
+                                                </a>
+                                            </div><!-- Post thumb end -->
+
+                                            <div class="post-content media-body">
+                                                <h4 class="post-title">
+                                                    <a href="#">هفته گذشته این خانه تزریق می کرد</a>
+                                                </h4>
+                                                <div class="post-meta mb-7">
+                                                    <span class="post-date"><i class="fa fa-clock-o"></i> خرداد 1399</span>
+                                                </div>
+                                            </div><!-- Post content end -->
+                                        </div><!-- Post block style end -->
+                                    </li><!-- Li 3 end -->
+                                </ul><!-- list-post end -->
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- col end -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-widtet post-widget">
+                        <div class="widget-content">
+                            <div class="footer-ads">
+                                @*<a href="#">
+                                    <img class="img-fluid" src="~/Template/images/banner-image/image6.jpg" alt="">
+                                    </a>*@
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- col end -->
+            </div><!-- row end -->
+            <div>
+                <div class="row align-items-center justify-content-between">
+                    <div class="col-12 text-center">
+                        <div class="copyright-content text-light">
+                            <p>تمام حقوق مادی و معنوی این وبلاگ متعلق به <a href="/" style="font-size:large">حسین گودرزی</a> است.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- container end -->
+    </div>
+    <!-- Footer End-->
+    <!-- ts-copyright start -->
+    <!-- ts-copyright end-->
+    @*@*<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>*@
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+    @*<script src="~/Login-Register/assets/js/vendor/jquery-3.2.1.min.js"></script>*@
+    <script src="~/Login-Register/assets/js/vendor/bootstrap.js"></script>
+    <!-- plugin----------------------------------------------------->
+    <script src="~/Login-Register/assets/js/vendor/owl.carousel.min.js"></script>
+    <script src="~/Login-Register/assets/js/vendor/jquery.countdown.js"></script>
+    <script src="~/Login-Register/assets/js/vendor/jquery.nice-select.min.js"></script>
+    <!-- main js---------------------------------------------------->
+    <script src="~/Login-Register/assets/js/main.js"></script>
+
+	    @RenderSection("Scripts",false)
+
+</body>
+
+</html>
