@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "Fxf2YtgaFTAQg3/8f+5BSViAlHLTBdEfSkW51G9KFbmzX5uF8bIP8g3EuNBnnCeaiq26vpmlLnpvVrNw+xv3bg==",
+  "success": true,
+  "projectFilePath": "D:\\Try\\New\\GoodianoBlog\\GoodianoBlog.Domain\\GoodianoBlog.Domain.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Hossein\\.nuget\\packages\\fluentvalidation\\11.0.3\\fluentvalidation.11.0.3.nupkg.sha512",
+    "C:\\Users\\Hossein\\.nuget\\packages\\fluentvalidation.aspnetcore\\11.0.3\\fluentvalidation.aspnetcore.11.0.3.nupkg.sha512",
+    "C:\\Users\\Hossein\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.0.3\\fluentvalidation.dependencyinjectionextensions.11.0.3.nupkg.sha512",
+    "C:\\Users\\Hossein\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\2.1.0\\microsoft.extensions.dependencyinjection.abstractions.2.1.0.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,12 @@
+D:\Try\New\GoodianoBlog\GoodianoBlog.Domain\bin\Debug\net6.0\GoodianoBlog.Domain.deps.json
+D:\Try\New\GoodianoBlog\GoodianoBlog.Domain\bin\Debug\net6.0\GoodianoBlog.Domain.dll
+D:\Try\New\GoodianoBlog\GoodianoBlog.Domain\bin\Debug\net6.0\ref\GoodianoBlog.Domain.dll
+D:\Try\New\GoodianoBlog\GoodianoBlog.Domain\bin\Debug\net6.0\GoodianoBlog.Domain.pdb
+D:\Try\New\GoodianoBlog\GoodianoBlog.Domain\obj\Debug\net6.0\GoodianoBlog.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Try\New\GoodianoBlog\GoodianoBlog.Domain\obj\Debug\net6.0\GoodianoBlog.Domain.AssemblyInfoInputs.cache
+D:\Try\New\GoodianoBlog\GoodianoBlog.Domain\obj\Debug\net6.0\GoodianoBlog.Domain.AssemblyInfo.cs
+D:\Try\New\GoodianoBlog\GoodianoBlog.Domain\obj\Debug\net6.0\GoodianoBlog.Domain.csproj.CoreCompileInputs.cache
+D:\Try\New\GoodianoBlog\GoodianoBlog.Domain\obj\Debug\net6.0\GoodianoBlog.Domain.dll
+D:\Try\New\GoodianoBlog\GoodianoBlog.Domain\obj\Debug\net6.0\ref\GoodianoBlog.Domain.dll
+D:\Try\New\GoodianoBlog\GoodianoBlog.Domain\obj\Debug\net6.0\GoodianoBlog.Domain.pdb
+D:\Try\New\GoodianoBlog\GoodianoBlog.Domain\obj\Debug\net6.0\GoodianoBlog.Domain.csproj.AssemblyReference.cache
