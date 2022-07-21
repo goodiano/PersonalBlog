@@ -1,0 +1,11 @@
+D:\Try\New\GoodianoBlog\GoodianoBlog.Common\bin\Debug\net6.0\GoodianoBlog.Common.deps.json
+D:\Try\New\GoodianoBlog\GoodianoBlog.Common\bin\Debug\net6.0\GoodianoBlog.Common.dll
+D:\Try\New\GoodianoBlog\GoodianoBlog.Common\bin\Debug\net6.0\ref\GoodianoBlog.Common.dll
+D:\Try\New\GoodianoBlog\GoodianoBlog.Common\bin\Debug\net6.0\GoodianoBlog.Common.pdb
+D:\Try\New\GoodianoBlog\GoodianoBlog.Common\obj\Debug\net6.0\GoodianoBlog.Common.GeneratedMSBuildEditorConfig.editorconfig
+D:\Try\New\GoodianoBlog\GoodianoBlog.Common\obj\Debug\net6.0\GoodianoBlog.Common.AssemblyInfoInputs.cache
+D:\Try\New\GoodianoBlog\GoodianoBlog.Common\obj\Debug\net6.0\GoodianoBlog.Common.AssemblyInfo.cs
+D:\Try\New\GoodianoBlog\GoodianoBlog.Common\obj\Debug\net6.0\GoodianoBlog.Common.csproj.CoreCompileInputs.cache
+D:\Try\New\GoodianoBlog\GoodianoBlog.Common\obj\Debug\net6.0\GoodianoBlog.Common.dll
+D:\Try\New\GoodianoBlog\GoodianoBlog.Common\obj\Debug\net6.0\ref\GoodianoBlog.Common.dll
+D:\Try\New\GoodianoBlog\GoodianoBlog.Common\obj\Debug\net6.0\GoodianoBlog.Common.pdb
