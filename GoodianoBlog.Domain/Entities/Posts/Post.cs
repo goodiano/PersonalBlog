@@ -16,6 +16,8 @@ namespace GoodianoBlog.Domain.Entities.Posts
         public virtual ICollection<ImageGallery?> ImageGalleries { get; set; }
         public virtual ICollection<Image?> Images { get; set; }
         public virtual ICollection<Comment?> Comments { get; set; }
+        public virtual Tag Tag { get; set; }
+        public int TagId { get; set; }
     }
 
 
