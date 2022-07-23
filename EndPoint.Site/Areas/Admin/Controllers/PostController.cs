@@ -5,6 +5,7 @@ using GoodianoBlog.Application.Services.Posts.Command.Admin.Posts.EditPost;
 using GoodianoBlog.Application.Services.Posts.Query.Admin.Authors.GetAllAuthors;
 using GoodianoBlog.Application.Services.Posts.Query.Admin.Posts.GetAllCategory;
 using GoodianoBlog.Application.Services.Posts.Query.Admin.Posts.GetAllPosts;
+using GoodianoBlog.Application.Services.Posts.Query.Admin.Tags.GetAllTags;
 using GoodianoBlog.Application.Services.Posts.Query.ClientSide.Posts.GetPostForEdit;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -25,6 +26,7 @@ namespace EndPoint.Site.Areas.Admin.Controllers
         private readonly IDeletePostServices _deletePost;
         private readonly IEditPostServices _editPost;
         private readonly IGetPostForEditServices _getPostForEdit;
+        private readonly IGetAllTagsServices _getAllTag;
         public PostController
             (IAddPostServices addPost,
             IGetAllCategory getAllCategory, 
@@ -33,7 +35,8 @@ namespace EndPoint.Site.Areas.Admin.Controllers
             IGetAllPostsServices getAllPost,
             IDeletePostServices deletePost,
             IEditPostServices editPost,
-            IGetPostForEditServices getPostForEdit)
+            IGetPostForEditServices getPostForEdit,
+            IGetAllTagsServices getAllTag)
         {
             _addPost = addPost;
             _getAllCategory = getAllCategory;
@@ -43,6 +46,7 @@ namespace EndPoint.Site.Areas.Admin.Controllers
             _deletePost = deletePost;
             _editPost = editPost;
             _getPostForEdit = getPostForEdit;
+            _getAllTag = getAllTag;
         }
 
 
@@ -80,6 +84,7 @@ namespace EndPoint.Site.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult Add()
         {
+            ViewBag.Tag = new SelectList(_getAllTag.Execute().Data, "Id", "Name");
             ViewBag.Author = new SelectList(_getAllAuthor.Execute().Data, "Id", "Name");
             ViewBag.Category = new SelectList(_getAllCategory.Execute().Data, "Id", "Name");
             return View();
@@ -142,6 +147,7 @@ namespace EndPoint.Site.Areas.Admin.Controllers
         public IActionResult Edit(int Id)
         {
             var result = _getPostForEdit.Execute(Id).Data;
+            ViewBag.Tag = new SelectList(_getAllTag.Execute().Data, "Id", "Name");
             ViewBag.Authors = new SelectList(_getAllAuthor.Execute().Data, "Id", "Name");
             ViewBag.Categories = new SelectList(_getAllCategory.Execute().Data, "Id", "Name");
 
@@ -172,7 +178,7 @@ namespace EndPoint.Site.Areas.Admin.Controllers
                 Time = request.Time,
                 Author = request.AuthorId,              
                 PostCategory = request.PostCategoryId,
-                
+                Tag = request.TagId,                
                 Content = request.Content,
                 FirstSlideSrc = filepath,
             });

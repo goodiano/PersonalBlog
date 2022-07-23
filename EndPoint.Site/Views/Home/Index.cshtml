@@ -1,6 +1,10 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@using EndPoint.Site.Models.ViewModel.HomePages
+@model HomePageViewModel
+
+@{
+    ViewData["Title"] = "خانه";
 	Layout = "~/Views/Shared/_Layout.cshtml";
+	int _sliderCount = 1;
 }
 
 <!DOCTYPE html>
@@ -11,7 +15,7 @@
 	<!-- Basic Page Needs
 	================================================== -->
 	<meta charset="utf-8">
-	<title>دیجی کول - قالب خبری خلاق HTML</title>
+	<title>گودیانو - پرسنال بلاگ</title>
 
 	<!-- Mobile Specific Metas
 	================================================== -->
@@ -67,106 +71,40 @@
 		<div class="container">
 			<div class="row ts-gutter-20">
 				<div class="col-lg-7 col-md-12 pad-r">
-					<div id="featured-slider" class="owl-carousel owl-theme featured-slider">
-						<div class="item post-overaly-style" style="background-image:url(../Template/images/news/lifestyle/image1.jpg)">
-							<div class="featured-post">
-								<a href="#" class="image-link">&nbsp;</a>
+					@foreach(var item in @Model.GetSliders)
+					{
+						if(_sliderCount == 1)
+						{
+						<div id="featured-slider" class="owl-carousel owl-theme featured-slider">
+							<div class="item post-overaly-style" style="background-image:url(../@item.Src)">
+								<div class="featured-post">
+									<a href="@item.Link" class="image-link">&nbsp;</a>
 								<div class="overlay-post-content">
 									<div class="post-content">
 										<div class="grid-category">
-											<a class="post-cat fashion" href="#">مدل</a>
-											<a class="post-cat lifestyle" href="#">سبک زندگی</a>
+											<a class="post-cat lifestyle" href="#">@item.Tag</a>
 										</div>
 
 										<h2 class="post-title title-lg">
-											<a href="#">همیشه سلامت خود را با تمیز نگه دارید</a>
+											<a href="#">@item.Title</a>
 										</h2>
 										<div class="post-meta">
 											<ul>
-												<li><a href="#"><i class="fa fa-user"></i> جان ویک</a></li>
-												<li><a href="#"><i class="icon icon-clock"></i> خرداد 1399</a></li>
-												<li><a href="#" class="view"><i class="icon icon-fire"></i> بازدید فراوان</a></li>
+												<li><a href="#"><i class="fa fa-user"></i> @item.Author</a></li>
+												<li><a href="#"><i class="icon icon-clock"></i> @item.Time.ToString("yyyy/MM/dd")</a></li>
 											</ul>	
 										</div>
 									</div>
 								</div>
 							</div><!--/ Featured post end -->
 						</div><!-- Item 1 end -->
-						<div class="item post-overaly-style" style="background-image:url(../Template/images/news/fashion/image3.png)">
-							<div class="featured-post">
-								<a href="#" class="image-link">&nbsp;</a>
-								<div class="overlay-post-content">
-									<div class="post-content">
-										<div class="grid-category">
-											<a class="post-cat fashion" href="#">مدل</a>
-											<a class="post-cat sports" href="#">ورزشی</a>
-										</div>
-
-										<h2 class="post-title title-lg">
-											<a href="#">همیشه سلامت خود را با تمیز نگه دارید</a>
-										</h2>
-										<div class="post-meta">
-											<ul>
-												<li><a href="#"><i class="fa fa-user"></i> جان ویک</a></li>
-												<li><a href="#"><i class="icon icon-clock"></i> خرداد 1399</a></li>
-												<li><a href="#" class="view"><i class="icon icon-fire"></i> بازدید فراوان</a></li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div><!--/ Featured post end -->
-						</div><!-- Item 1 end -->
-						<div class="item post-overaly-style" style="background-image:url(../Template/images/news/tech/image5.png)">
-							<div class="featured-post">
-								<a href="#" class="image-link">&nbsp;</a>
-								<div class="overlay-post-content">
-									<div class="post-content">
-										<div class="grid-category">
-											<a class="post-cat fashion" href="#">مدل</a>
-											<a class="post-cat lifestyle" href="#">سبک زندگی</a>
-										</div>
-
-										<h2 class="post-title title-lg">
-											<a href="#">همیشه سلامت خود را با تمیز نگه دارید</a>
-										</h2>
-										<div class="post-meta">
-											<ul>
-												<li><a href="#"><i class="fa fa-user"></i> جان ویک</a></li>
-												<li><a href="#"><i class="icon icon-clock"></i> خرداد 1399</a></li>
-												<li><a href="#" class="view"><i class="icon icon-fire"></i> بازدید فراوان</a></li>
-											
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div><!--/ Featured post end -->
-						</div><!-- Item 1 end -->
-						<div class="item post-overaly-style" style="background-image:url(../Template/images/news/lifestyle/image2.png)">
-							<div class="featured-post">
-								<a href="#" class="image-link">&nbsp;</a>
-								<div class="overlay-post-content">
-									<div class="post-content">
-										<div class="grid-category">
-											<a class="post-cat health" href="#">سلامت</a>
-											<a class="post-cat lifestyle" href="#">سبک زندگی</a>
-										</div>
-
-										<h2 class="post-title title-lg">
-											<a href="#">همیشه سلامت خود را با تمیز نگه دارید</a>
-										</h2>
-										<div class="post-meta">
-											<ul>
-												<li><a href="#"><i class="fa fa-user"></i> جان ویک</a></li>
-												<li><a href="#"><i class="icon icon-clock"></i> خرداد 1399</a></li>
-												<li><a href="#" class="view"><i class="icon icon-fire"></i> بازدید فراوان</a></li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div><!--/ Featured post end -->
-						</div><!-- Item 1 end -->
+						}
+						
 					</div><!-- Featured owl carousel end-->
-				</div><!-- Col 7 end -->
+					</div><!-- Col 7 end -->
+					}
+					
+				
 
 				<div class="col-lg-5 col-md-12 pad-l">
 					<div class="row ts-gutter-20">

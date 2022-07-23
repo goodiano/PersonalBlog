@@ -276,3 +276,4 @@ D:\Try\New\GoodianoBlog\EndPoint.Site\obj\Debug\net6.0\EndPoint.Site.dll
 D:\Try\New\GoodianoBlog\EndPoint.Site\obj\Debug\net6.0\ref\EndPoint.Site.dll
 D:\Try\New\GoodianoBlog\EndPoint.Site\obj\Debug\net6.0\EndPoint.Site.pdb
 D:\Try\New\GoodianoBlog\EndPoint.Site\obj\Debug\net6.0\EndPoint.Site.genruntimeconfig.cache
+D:\Try\New\GoodianoBlog\EndPoint.Site\obj\Debug\net6.0\EndPoint.Site.MvcApplicationPartsAssemblyInfo.cs

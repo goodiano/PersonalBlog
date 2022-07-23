@@ -93,6 +93,17 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="category">تگ</label>
+                                    <select id="tag" class="form-control" asp-items=@ViewBag.Tag></select>
+
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
                             <fieldset class="form-group">
                                 <label for="basicInput">تصویر اصلی </label>
@@ -150,6 +161,7 @@
             data.append("Time", $("#timing").val());
             data.append("AuthorId", $('#author').find('option:selected').val());
             data.append("PostCategoryId", $('#category').find('option:selected').val());
+            data.append("TagId", $('#tag').find('option:selected').val());
             var myContent = tinymce.get("mytextarea").getContent();
             data.append("Content",myContent);
 

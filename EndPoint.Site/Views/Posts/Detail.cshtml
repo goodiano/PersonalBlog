@@ -89,7 +89,7 @@
 </head>
 
 <body>
-
+    
     <!-- breadcrumb -->
     <div class="breadcrumb-section">
         <div class="container">
@@ -98,11 +98,10 @@
                     <ol class="breadcrumb">
                         <li>
                             <i class="fa fa-home"></i>
-                            <a href="#">خانه</a>
+                            <a href="/">خانه</a>
                             <i class="fa fa-angle-right"></i>
                         </li>
-                        <li><a href="#">سبک زندگی</a></li>
-                        <li><i class="fa fa-angle-right"></i>تلاش برای فروش یک..</li>
+                        <li><a href="~/Posts?CatId=@Model.PostCategories.Id">@Model.PostCategories.Name</a></li>
                     </ol>
                 </div>
             </div><!-- row end -->
@@ -124,9 +123,7 @@
                                 <li class="post-author">
                                     <a href="#"><img alt="" src="@Model.Author.Src"><strong>@Model.Author.Name</strong></a>
                                 </li>
-                                <li><a href="#"><i class="fa fa-clock-o"></i>@Model.Date</a></li>
-                                <li><a href="#"><i class="fa fa-comments"></i>5 نظر </a></li>
-                                <li><a href="#" class="view"><i class="icon icon-fire"></i> بازدید فراوان</a></li>
+                                <li><a href="#"><i class="fa fa-clock-o"></i>@Model.Date.ToString("yyyy/MM/dd")</a></li>
                                 <li><a href="#"><i class="fa fa-eye"></i>@Model.Time دقیقه خواندن </a></li>
 
                             </ul>
@@ -252,14 +249,13 @@
                                                             <p>@Html.Raw(item.Context)</p>
                                                         </div>
                                                         <div class="text-left">
-                                                            <a class="comment-reply" href="#AddComment-Replay">پاسخ</a>
                                                         </div>
                                                     </div>
                                                 </div>
 
                                                 <!-- Comments end -->
                                             }                
-                                            <ul class="comments-reply">
+                                           @* <ul class="comments-reply">
                                                 @foreach (var replay in item.GetCommentReplays)
                                                 {
                                                     @if (item.IsConfirm == true)
@@ -281,7 +277,7 @@
                                                         </li>
                                                     }
                                                 }
-                                            </ul>
+                                            </ul>*@
                                             <!-- comments-reply end -->
                                         }
                                 </li><!-- Comments-list li end -->
@@ -415,142 +411,57 @@
 <script src="~/Sweetalert2/sweetalert2.min.js"></script>
 
 <script>
-     <script src="~/Scripts/handlebars-v4.0.12.js"></script>
-    <script>
-        function addNewComment(data) {
-            return $.ajax({
-                type: "POST",
-                url: '@Url.Action("addNewComment", "Home")',
-                data: data,
-                dataType: 'json',
-                contentType: 'application/json;charset=utf-8'
-            });
-        }
-    $(function () {
-        var source = document.getElementById("comment-template").innerHTML;
-        var template = Handlebars.compile(source);
-        
-        $("#addNewCommentBtn").click(function (e) {
-            e.preventDefault();
-            var data = JSON.stringify({
-                parentId: 0,
-                commentText: $("#commentInput").val(),
-                username: Math.random().toString(36).substring(2, 10) + Math.random().toString(36).substring(2, 5)
-            });
-            
-            $.when(addNewComment(data)).then(function (response) {
-                if (response.error == false) {
-                    var $commentHtml = template(response.result);
-                    $(".comments").append($commentHtml);
-                    $("#commentInput").val('');
-                } else {
-                    console.log("An error has occured");
-                }
-            }).fail(function (err) {
-                console.log(err);
-            })
-        });
-        $(document).on("click", ".reply-link", function (e) {
-            e.preventDefault();
-            var $self = $(this);
-            var $commentListItem = $self.parents(".comment-body");
-            var replySource = document.getElementById("reply-template").innerHTML;
-            $commentListItem.after(replySource);
-            $(document).find(".hidParentId").val($self.attr("href"));
-            
-        });
-        
-        $(document).on("click", ".addReplyBtn", function (e) {
-            e.preventDefault();
-            var $self = $(this);
-            var $replyInput = $(document).find("#replyInput");
-            var parentId = $(document).find(".hidParentId").val();
-            var $repliesUL = $(document).find("ul[data-parentid='" + parentId + "']");
-            var $commentBody = $(document).find("[data-id='" + parentId + "']");
-            var replyULCount = $repliesUL.length;
-            
-            var data = JSON.stringify({
-                parentId: parentId,
-                commentText: $replyInput.val(),
-                username: Math.random().toString(36).substring(2, 10) + Math.random().toString(36).substring(2, 5)
-            });
-            $.when(addNewComment(data)).then(function (response) {
-                if (response.error == false) {
-                    var commentHtml = template(response.result);
-                    
-                    if (replyULCount > 0) {
-                        
-                        $repliesUL.append(commentHtml);
-                    } else {
-                        
-                        $commentBody.append("<ul class='replies'></ul>")
-                            .append(commentHtml);                        
-                    }
-                    $(document).find(".reply-form").remove();
-                    
-                } else {
-                    console.log("An error has occured");
-                }
-            }).fail(function (err) {
-                console.log(err);
-            })
-        
-        });
-    });
-    </script>
+    
+    $('#btnAddComment').on('click', function () {
+
+    var data = new FormData();
+
+     data.append("UserName", $("#userName").val());
+     data.append("Email", $("#email").val());
+     data.append("PostId", $("#postId").val());
+
+     var Content = tinymce.get("mytextarea").getContent();
+     data.append("Context",Content);
 
 
+     // ارسال اطلاعات بع کنترلر
+    var ajaxRequest = $.ajax({
+             type: "POST",
+             url: "AddComment",
+             contentType: true,
+             processData: true,
+             data: data,
+             success: function (data) {
 
-//    $('#btnAddComment').on('click', function () {
+                 if (data.isSuccess == true) {
 
-//    var data = new FormData();
+                     swal.fire(
+                         'موفق!',
+                         data.message,
+                         'success'
+                     );
+                 }
+                 else {
 
-//     data.append("UserName", $("#userName").val());
-//     data.append("Email", $("#email").val());
-//     data.append("PostId", $("#postId").val());
+                     swal.fire(
+                         'هشدار!',
+                         data.message,
+                         'warning'
+                     );
+                 }
 
-//     var Content = tinymce.get("mytextarea").getContent();
-//     data.append("Context",Content);
+             },
+             error: function (xhr, ajaxOptions, thrownError) {
+                 alert(xhr.status);
+                 alert(thrownError);
+             }
 
+         });
 
-//     // ارسال اطلاعات بع کنترلر
-//    var ajaxRequest = $.ajax({
-//             type: "POST",
-//             url: "AddComment",
-//             contentType: true,
-//             processData: true,
-//             data: data,
-//             success: function (data) {
-
-//                 if (data.isSuccess == true) {
-
-//                     swal.fire(
-//                         'موفق!',
-//                         data.message,
-//                         'success'
-//                     );
-//                 }
-//                 else {
-
-//                     swal.fire(
-//                         'هشدار!',
-//                         data.message,
-//                         'warning'
-//                     );
-//                 }
-
-//             },
-//             error: function (xhr, ajaxOptions, thrownError) {
-//                 alert(xhr.status);
-//                 alert(thrownError);
-//             }
-
-//         });
-
-//         ajaxRequest.done(function (xhr, textStatus) {
-//             // Do other operation
-//         });
-//     });
-//</script>
+         ajaxRequest.done(function (xhr, textStatus) {
+             // Do other operation
+         });
+     });
+</script>
 }
 </html>

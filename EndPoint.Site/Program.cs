@@ -1,5 +1,7 @@
 using GoodianoBlog.Application.Interfaces.Contexts;
+using GoodianoBlog.Application.Services.Common.GetHomePagePosts;
 using GoodianoBlog.Application.Services.Common.GetItemMenu;
+using GoodianoBlog.Application.Services.HomePage.Query.GetSliders;
 using GoodianoBlog.Application.Services.Posts.Command.Admin.Categories.AddCategory;
 using GoodianoBlog.Application.Services.Posts.Command.Admin.Categories.DeleteCategory;
 using GoodianoBlog.Application.Services.Posts.Command.Admin.Categories.EditCategory;
@@ -7,12 +9,15 @@ using GoodianoBlog.Application.Services.Posts.Command.Admin.Comments.ChangeStatu
 using GoodianoBlog.Application.Services.Posts.Command.Admin.Posts.AddPost;
 using GoodianoBlog.Application.Services.Posts.Command.Admin.Posts.DeletePost;
 using GoodianoBlog.Application.Services.Posts.Command.Admin.Posts.EditPost;
+using GoodianoBlog.Application.Services.Posts.Command.Admin.Tags.AddTag;
+using GoodianoBlog.Application.Services.Posts.Command.Admin.Tags.DeleteTag;
 using GoodianoBlog.Application.Services.Posts.Command.ClientSide.AddComment;
 using GoodianoBlog.Application.Services.Posts.Query.Admin.Authors.GetAllAuthors;
 using GoodianoBlog.Application.Services.Posts.Query.Admin.Categories.GetCategory;
 using GoodianoBlog.Application.Services.Posts.Query.Admin.Comments.GetAllComments;
 using GoodianoBlog.Application.Services.Posts.Query.Admin.Posts.GetAllCategory;
 using GoodianoBlog.Application.Services.Posts.Query.Admin.Posts.GetAllPosts;
+using GoodianoBlog.Application.Services.Posts.Query.Admin.Tags.GetAllTags;
 using GoodianoBlog.Application.Services.Posts.Query.ClientSide.Posts.GetPostDetail;
 using GoodianoBlog.Application.Services.Posts.Query.ClientSide.Posts.GetPostForEdit;
 using GoodianoBlog.Application.Services.Posts.Query.ClientSide.Posts.GetPosts;
@@ -87,6 +92,11 @@ builder.Services.AddScoped<IGetPostForEditServices, GetPostForEditServices>();
 builder.Services.AddScoped<IAddCommentsServices, AddCommentsService>();
 builder.Services.AddScoped<IGetAllCommentsServices, GetAllCommentsService>();
 builder.Services.AddScoped<ICommentChangeStatusServices, CommentChangeStatusServices>();
+builder.Services.AddScoped<IAddTagServices, AddTagService>();
+builder.Services.AddScoped<IDeleteTagServices, DeleteTagService>();
+builder.Services.AddScoped<IGetAllTagsServices, GetAllTagsService>();
+builder.Services.AddScoped<IGetHomePageImageServices, GetHomePageImageServices>();
+builder.Services.AddScoped<IGetSliderServices, GetSliderServices>();
 #endregion
 
 var app = builder.Build();
