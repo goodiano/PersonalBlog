@@ -9,6 +9,7 @@ namespace GoodianoBlog.Application.Services.Posts.Query.ClientSide.Posts.GetPost
         public string ImageSrc { get; set; }
         public DateTime Date { get; set; }
         public string Author { get; set; }
+        public int CountView { get; set; }        
         public string Category { get; set; }
     }
 }

@@ -23,4 +23,8 @@
     <ProjectReference Include="..\GoodianoBlog.Domain\GoodianoBlog.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Services\HomePage\Command\" />
+  </ItemGroup>
+
 </Project>

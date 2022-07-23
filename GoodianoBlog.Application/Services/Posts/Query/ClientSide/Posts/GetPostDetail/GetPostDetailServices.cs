@@ -18,7 +18,6 @@ namespace GoodianoBlog.Application.Services.Posts.Query.ClientSide.Posts.GetPost
                 .Include(p => p.Author)
                 .Include(p => p.PostCategories)
                 .Include(p=> p.Comments)
-                .ThenInclude(p=> p.CommentReplays)
                 .Where(p => p.Id == Id)
                 .FirstOrDefault();
 
@@ -46,13 +45,6 @@ namespace GoodianoBlog.Application.Services.Posts.Query.ClientSide.Posts.GetPost
                         Context = p.Context,
                         UserName = p.UserName,
                         IsConfirm = p.IsConfirm,
-                        GetCommentReplays = p.CommentReplays.Select(comment => new GetAllCommentReplayDto
-                        {
-                            Context = comment.Context,
-                            IsConfirm = comment.IsConfirm,
-                            UserName  = comment.UserName,
-                            CommentId = comment.CommentsId
-                        }).ToList(),
                     }).ToList(), 
                 },
                 IsSuccess = true

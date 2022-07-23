@@ -18,7 +18,8 @@ namespace GoodianoBlog.Application.Services.Posts.Query.ClientSide.Posts.GetPost
             var postCategory = _context.Posts
                 .Include(p => p.Images)
                 .Include(p=> p.PostCategories)
-                .Include(p=> p.Author).AsQueryable();
+                .Include(p=> p.Author)
+                .OrderByDescending(p=> p.Id).AsQueryable();
 
             if(CatId != null)
             {
@@ -64,7 +65,8 @@ namespace GoodianoBlog.Application.Services.Posts.Query.ClientSide.Posts.GetPost
                         Date = p.InsertTime,
                         ImageSrc = p.FirstSlideSrc,
                         Title = p.Title,
-                        Category = p.PostCategories.Name
+                        Category = p.PostCategories.Name,
+                        CountView = p.CountView
                     }).ToList()
                 },
                 IsSuccess = true,

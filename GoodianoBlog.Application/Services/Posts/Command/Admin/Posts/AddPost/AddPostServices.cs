@@ -56,6 +56,7 @@ namespace GoodianoBlog.Application.Services.Posts.Command.Admin.Posts.AddPost
                     AuthorId = request.AuthorId,
                     Time = request.Time,
                     Content = request.Content,
+                    TagId = request.TagId,
                     PostCategoriesId = category.Id
                 };
 

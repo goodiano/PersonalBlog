@@ -1,4 +1,6 @@
-﻿using GoodianoBlog.Domain.Entities.Posts;
+﻿using GoodianoBlog.Domain.Entities.HomePage.HomePageImages;
+using GoodianoBlog.Domain.Entities.HomePage.Sliders;
+using GoodianoBlog.Domain.Entities.Posts;
 using GoodianoBlog.Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -21,6 +23,10 @@ namespace GoodianoBlog.Application.Interfaces.Contexts
         DbSet<Image> Images { get; set; }
         DbSet<ImageGallery> ImageGalleries { get; set; }
         DbSet<PostCategory> PostCategories { get; set; }
+        public DbSet<Tag> Tags { get; set; }
+        public DbSet<HomePageImage> HomePageImages { get; set; }
+        public DbSet<Slider> Sliders { get; set; }
+
 
 
 

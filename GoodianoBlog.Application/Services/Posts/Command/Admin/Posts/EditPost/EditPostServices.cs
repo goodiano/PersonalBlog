@@ -16,12 +16,14 @@ namespace GoodianoBlog.Application.Services.Posts.Command.Admin.Posts.EditPost
             var post = _context.Posts.Find(request.Id);
                 
             var author = _context.Authors.Find(request.Author);
+            var tag = _context.Tags.Find(request.Tag);
             var postCategory = _context.PostCategories.Find(request.PostCategory);
 
 
             post.Title = request.Title;
             post.Time = request.Time;
             post.Author = author;
+            post.Tag = tag;
             post.PostCategories = postCategory;
             post.FirstSlideSrc = request.FirstSlideSrc;
             post.Content = request.Content;

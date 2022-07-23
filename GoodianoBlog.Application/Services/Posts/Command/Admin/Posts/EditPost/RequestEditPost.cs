@@ -7,6 +7,7 @@ namespace GoodianoBlog.Application.Services.Posts.Command.Admin.Posts.EditPost
         public int Id { get; set; }
         public string Title { get; set; } 
         public int Author { get; set; }
+        public int Tag { get; set; }
         public string Time { get; set; }
         public int PostCategory { get; set; }
         public string FirstSlideSrc { get; set; }       

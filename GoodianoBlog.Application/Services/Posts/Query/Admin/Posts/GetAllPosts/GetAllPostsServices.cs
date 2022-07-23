@@ -16,12 +16,15 @@ namespace GoodianoBlog.Application.Services.Posts.Query.Admin.Posts.GetAllPosts
             var post = _context.Posts
                 .Include(p => p.Author)
                 .Include(p => p.PostCategories)
+                .Include(p=> p.Tag)
+                .OrderByDescending(p=> p.Id)
                 .ToList()
                 .Select(p => new ResultGetAllPostsDto
                 {
                     Id = p.Id,
                     Title = p.Title,
                     Author = p.Author.Name,
+                    Tag = p.Tag.Name,
                     FirstSlideSrc = p.FirstSlideSrc,
                     Time = p.Time,
                     PostCategory = p.PostCategories.Name,

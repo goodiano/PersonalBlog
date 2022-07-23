@@ -8,6 +8,7 @@
         public string FirstSlideSrc { get; set; }
         public string Content { get; set; }
         public string Author { get; set; }
+        public string Tag { get; set; }
         public string PostCategory { get; set; }
     }
 }
