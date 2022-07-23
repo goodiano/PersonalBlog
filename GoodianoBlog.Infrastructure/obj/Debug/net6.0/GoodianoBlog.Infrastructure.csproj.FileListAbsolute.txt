@@ -9,4 +9,3 @@ D:\Try\New\GoodianoBlog\GoodianoBlog.Infrastructure\obj\Debug\net6.0\GoodianoBlo
 D:\Try\New\GoodianoBlog\GoodianoBlog.Infrastructure\obj\Debug\net6.0\GoodianoBlog.Infrastructure.dll
 D:\Try\New\GoodianoBlog\GoodianoBlog.Infrastructure\obj\Debug\net6.0\ref\GoodianoBlog.Infrastructure.dll
 D:\Try\New\GoodianoBlog\GoodianoBlog.Infrastructure\obj\Debug\net6.0\GoodianoBlog.Infrastructure.pdb
-D:\Try\New\GoodianoBlog\GoodianoBlog.Infrastructure\obj\Debug\net6.0\GoodianoBlog.Infrastructure.csproj.AssemblyReference.cache
