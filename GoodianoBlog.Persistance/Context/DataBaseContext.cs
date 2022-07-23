@@ -1,6 +1,8 @@
 ﻿using GoodianoBlog.Application.Config;
 using GoodianoBlog.Application.Interfaces.Contexts;
 using GoodianoBlog.Common.RoleList;
+using GoodianoBlog.Domain.Entities.HomePage.HomePageImages;
+using GoodianoBlog.Domain.Entities.HomePage.Sliders;
 using GoodianoBlog.Domain.Entities.Posts;
 using GoodianoBlog.Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
@@ -28,6 +30,10 @@ namespace GoodianoBlog.Persistance.Context
         public DbSet<Image> Images { get; set; }
         public DbSet<ImageGallery> ImageGalleries { get; set; }
         public DbSet<PostCategory> PostCategories { get; set; }
+        public DbSet<Tag> Tags { get; set; }
+        public DbSet<HomePageImage> HomePageImages { get; set; }
+        public DbSet<Slider> Sliders { get; set; }
+
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
